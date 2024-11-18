@@ -1,5 +1,5 @@
 export default class Senha {
-  static criar(tamanho: number = 15): string {
+  static gerar(tamanho: number = 15): string {
     const minusculas = "abcdefghijklmnopqrstuvxyz";
     const maiusculas = minusculas.toUpperCase();
     const numeros = "0123456789";
