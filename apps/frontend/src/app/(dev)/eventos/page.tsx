@@ -11,9 +11,9 @@ export default function PaginaEventos() {
         return (
           <div
             key={evento.id}
-            className="flex w-full flex-col overflow-hidden rounded-lg bg-zinc-800"
+            className="flex w-full flex-col overflow-hidden rounded-lg bg-zinc-800 text-center"
           >
-            <div className="relative h-44 w-full">
+            <div className="relative h-52 w-full">
               <Image
                 src={evento.imagem}
                 fill
