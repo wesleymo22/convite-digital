@@ -1,4 +1,4 @@
-import { Convidado } from "@/core";
+import { Convidado } from "core";
 
 interface ConvidadoItemProps {
   convidado: Convidado;
