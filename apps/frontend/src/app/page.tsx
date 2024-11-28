@@ -11,6 +11,7 @@ export default function Home() {
           complicações
         </p>
       </div>
+
       <Link href={"/evento"} className="botao azul text-lg uppercase">
         Crie o seu Evento
       </Link>

@@ -4,14 +4,14 @@ import FormSenhaEvento from "@/components/evento/FormSenhaEvento";
 import { Convidado, Evento, eventos } from "core";
 import { use, useEffect, useState } from "react";
 
-interface AdminEventoProps {
+interface PaginaAdminEvento {
   params: Promise<{ todos: string[] }>;
 }
 
-export default function AdminEvento({ params }: AdminEventoProps) {
+export default function PaginaAdminEvento({ params }: PaginaAdminEvento) {
   const { todos } = use(params);
   const id = todos[0];
-  const [senha, setSenha] = useState<string | null>(todos[1] ?? null);
+  const senha = todos[1] ?? null;
   const [evento, setEvento] = useState<Evento | null>(null);
   const presentes = evento?.convidados.filter((c) => c.confirmado) ?? [];
   const ausentes = evento?.convidados.filter((c) => !c.confirmado) ?? [];
