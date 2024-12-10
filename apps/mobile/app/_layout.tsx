@@ -18,6 +18,18 @@ export default function RootLayout() {
             },
           }}
         />
+        <Stack.Screen
+          name="(stack)/qrcode"
+          options={{
+            headerShown: true,
+            title: "Leitor QRCode",
+            headerBackTitle: "Voltar",
+            headerTintColor: "White",
+            headerStyle: {
+              backgroundColor: colors.zinc[900],
+            },
+          }}
+        />
       </Stack>
     </ProvedorEventos>
   );
