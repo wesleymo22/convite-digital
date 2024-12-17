@@ -1,8 +1,9 @@
 "use client";
 import DashboardEvento from "@/components/evento/DashboardEvento";
 import FormSenhaEvento from "@/components/evento/FormSenhaEvento";
+import useApi from "@/data/hooks/useApi";
 import { Convidado, Evento, eventos } from "core";
-import { use, useEffect, useState } from "react";
+import { use, useCallback, useEffect, useState } from "react";
 
 interface PaginaAdminEvento {
   params: Promise<{ todos: string[] }>;
@@ -10,8 +11,9 @@ interface PaginaAdminEvento {
 
 export default function PaginaAdminEvento({ params }: PaginaAdminEvento) {
   const { todos } = use(params);
+  const { httpPost } = useApi();
   const id = todos[0];
-  const senha = todos[1] ?? null;
+  const [senha, setSenha] = useState<string>(todos[1] ?? "");
   const [evento, setEvento] = useState<Evento | null>(null);
   const presentes = evento?.convidados.filter((c) => c.confirmado) ?? [];
   const ausentes = evento?.convidados.filter((c) => !c.confirmado) ?? [];
@@ -26,6 +28,12 @@ export default function PaginaAdminEvento({ params }: PaginaAdminEvento) {
     setEvento(evento ?? null);
   }
 
+  const obterEvento = useCallback(async () => {
+    if (!id || !senha) return;
+    const evento = await httpPost("/eventos/acessar", { id, senha });
+    setEvento(evento);
+  }, [httpPost, id, senha]);
+
   useEffect(() => {
     carregarEvento();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,9 +47,14 @@ export default function PaginaAdminEvento({ params }: PaginaAdminEvento) {
           ausentes={ausentes}
           presentes={presentes}
           totalGeral={totalGeral}
+          atualizarListaConvidados={obterEvento}
         />
       ) : (
-        <FormSenhaEvento />
+        <FormSenhaEvento
+          acessarEvento={obterEvento}
+          senha={senha}
+          setSenha={setSenha}
+        />
       )}
     </div>
   );

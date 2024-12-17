@@ -9,6 +9,7 @@ interface DashboardEventoProps {
   presentes: Convidado[];
   ausentes: Convidado[];
   totalGeral: number;
+  atualizarListaConvidados(): void;
 }
 
 export default function DashboardEvento({
@@ -16,6 +17,7 @@ export default function DashboardEvento({
   presentes,
   totalGeral,
   ausentes,
+  atualizarListaConvidados,
 }: DashboardEventoProps) {
   return (
     <div className="flex flex-col gap-2">
@@ -41,7 +43,10 @@ export default function DashboardEvento({
         />
       </div>
 
-      <button className="botao azul mt-12 self-end">
+      <button
+        className="botao azul mt-12 self-end"
+        onClick={atualizarListaConvidados}
+      >
         <span>Atualizar lista de Convidados</span>
       </button>
       <span className="flex py-2 text-xl font-bold text-white/80">
