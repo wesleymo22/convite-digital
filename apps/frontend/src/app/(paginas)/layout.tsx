@@ -8,10 +8,10 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   return (
-    <ProviderEvento>
-      <ProviderMensagens>
+    <ProviderMensagens>
+      <ProviderEvento>
         <Pagina>{children}</Pagina>;
-      </ProviderMensagens>
-    </ProviderEvento>
+      </ProviderEvento>
+    </ProviderMensagens>
   );
 }

@@ -7,7 +7,7 @@
     "packages:core": "cd packages/core && npm run dev",
     "apps:backend": "cd apps/backend && npm run start:dev",
     "apps:frontend": "cd apps/frontend && npm run dev",
-    "-apps:mobile": "cd apps/mobile && npm run android"
+    "apps:mobile": "cd apps/mobile && npm run web"
   },
   "author": "",
   "license": "ISC",
